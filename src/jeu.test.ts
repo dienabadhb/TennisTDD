@@ -16,4 +16,18 @@ describe("les points", () => {
   it("le score est Zéro-Zéro au début du jeu", () => {
     expect(unJeu().score()).toBe("Zéro-Zéro");
   })
+  it.each([
+  [1, 0, "Quinze-Zéro"],
+  [0, 1, "Zéro-Quinze"],
+  [2, 1, "Trente-Quinze"],
+  [3, 2, "Quarante-Trente"],
+])(
+  "annonce les points en français : Alice %i, Bob %i donne %s",
+  (pointsAlice, pointsBob, attendu) => {
+    const jeu = unJeu();
+    marque(jeu, "Alice", pointsAlice);
+    marque(jeu, "Bob", pointsBob);
+    expect(jeu.score()).toBe(attendu);
+  },
+);
 });
