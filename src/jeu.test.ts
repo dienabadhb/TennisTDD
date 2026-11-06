@@ -33,3 +33,21 @@ describe("les points", () => {
     expect(jeu.score()).toBe("Égalité");
   });
 });
+
+describe("la victoire", () => {
+  it.each([
+    [3, 0, "Alice", "Victoire Alice"],
+    [0, 3, "Bob", "Victoire Bob"],
+    [3, 3, "Alice", "Victoire Alice"],
+    [3, 3, "Bob", "Victoire Bob"],
+  ])(
+    "gagne en marquant à Quarante : Alice %i, Bob %i, point pour %s donne %s",
+    (pointsAlice, pointsBob, marqueur, attendu) => {
+      const jeu = unJeu();
+      marque(jeu, "Alice", pointsAlice);
+      marque(jeu, "Bob", pointsBob);
+      jeu.pointPour(marqueur);
+      expect(jeu.score()).toBe(attendu);
+    },
+  );
+});
