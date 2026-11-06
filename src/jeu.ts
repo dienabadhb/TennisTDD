@@ -18,7 +18,8 @@ export class Jeu {
 
   score(): string {
   const { joueur1, joueur2 } = this.points;
-  if (joueur1 === joueur2 && joueur1 >= 1 && joueur1 < 3) {
+  if (joueur1 === joueur2 && joueur1 >= 3) return "Égalité";
+  if (joueur1 === joueur2 && joueur1 >= 1) {
     return `${NOMS_POINTS[joueur1]}-A`;
   }
   return `${NOMS_POINTS[joueur1]}-${NOMS_POINTS[joueur2]}`;
