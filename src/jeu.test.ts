@@ -1,6 +1,7 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { Jeu } from "./jeu.ts";
 import type { Classement } from "./classement";
+
 
 const classementBidon: Classement = { enregistrer: () => {} };
 

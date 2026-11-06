@@ -14,14 +14,16 @@ export class Jeu {
   ) {}
 
   pointPour(joueur: string): void {
-    const estJoueur1 = joueur === this.joueur1;
-    const cle = estJoueur1 ? "joueur1" : "joueur2";
-    if (this.points[cle] === POINTS_A_QUARANTE) {
-      this.vainqueur = joueur;
-    } else {
-      this.points[cle]++;
-    }
+  const estJoueur1 = joueur === this.joueur1;
+  const cle = estJoueur1 ? "joueur1" : "joueur2";
+  if (this.points[cle] === POINTS_A_QUARANTE) {
+    this.vainqueur = joueur;
+    const perdant = estJoueur1 ? this.joueur2 : this.joueur1;
+    this.classement.enregistrer(joueur, perdant);
+  } else {
+    this.points[cle]++;
   }
+}
 
   score(): string {
     if (this.vainqueur) return `Victoire ${this.vainqueur}`;

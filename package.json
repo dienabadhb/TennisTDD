@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "scripts": {
     "test": "vitest run",
     "test:watch": "vitest"
+    }
   },
   "keywords": [],
   "author": "",
