@@ -51,3 +51,19 @@ describe("la victoire", () => {
     },
   );
 });
+
+describe("le classement du tournoi", () => {
+  // Double : SPY (vi.fn()). enregistrer() est une sortie : Jeu envoie un
+  // résultat au classement et n'attend rien en retour. Il faut donc observer
+  // l'appel après coup. Un dummy ne retient rien, un stub n'a aucune valeur
+  // de retour à fournir (void), un fake serait du code inutile.
+  it("enregistre le vainqueur puis le perdant, une seule fois, à la fin du match", () => {
+    const enregistrer = vi.fn();
+    const jeu = new Jeu("Alice", "Bob", { enregistrer });
+
+    marque(jeu, "Alice", 4);
+
+    expect(enregistrer).toHaveBeenCalledTimes(1);
+    expect(enregistrer).toHaveBeenCalledWith("Alice", "Bob");
+  });
+});
